@@ -32,8 +32,7 @@ char *fetch(char *host,int remote_port){
 	send(socket_descriptor,header,strlen(header),MSG_CONFIRM);
 	recv(socket_descriptor,response,0x1643210,MSG_WAITALL);
 	
-	char *truncated_buffer = response+182; 
-	printf("%s\n",truncated_buffer);
+	char *truncated_buffer = response+182;
 	
 	close(socket_descriptor);
 	return truncated_buffer;
